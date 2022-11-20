@@ -11,6 +11,7 @@ defineEmits(['on-close'])
     <div 
       v-if="isVisible"
       class="the-drawer__background" 
+      @click="$emit('on-close')"
     />
   </transition>
   <transition name="slide-x">
