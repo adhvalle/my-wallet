@@ -19,6 +19,11 @@ const formData = reactive({
   receiver: ''
 })
 const currencies = ['ETH', 'DOGE', 'BTC']
+const formResponse = ref('')
+const formResponses = {
+  success: 'Your transaction has been sent.',
+  error: 'Something was wrong try again later.'
+}
 
 const openDrawerCrypto = async () => {
   await retrieveContacts()
@@ -26,8 +31,17 @@ const openDrawerCrypto = async () => {
 }
 
 const submit = async () => {
-  await sendTransaction(formData)
-  retrieveWallet(true)
+  try {
+    await sendTransaction(formData)
+    retrieveWallet(true)
+    _resetForm()
+    formResponse.value = 'success'
+  } catch (error) {
+    formResponse.value = 'error'
+  }
+}
+
+const _resetForm = () => {
   formData.amount = ''
   formData.currency = ''
   formData.receiver = ''
@@ -43,8 +57,9 @@ watch(() => props.isVisible, value => {
     :is-visible="showDrawer" 
     @on-close="$emit('on-close')"
   >
-    <pre>{{ formData }}</pre>
-
+    <div v-if="formResponse">
+      {{ formResponses[formResponse] }}
+    </div>
     <form @submit.prevent="submit">
       <select v-model="formData.receiver">
         <option

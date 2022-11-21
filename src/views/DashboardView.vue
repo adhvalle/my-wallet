@@ -15,7 +15,7 @@ const showDrawerCrypto = ref(false)
   <p>balance</p>
   <div><pre>{{ myWallet.balance }}</pre></div>
   <p>transactions</p>
-  <div><pre>{{ myWallet.transactions.reverse() }}</pre></div>
+  <div><pre>{{ myWallet.transactions }}</pre></div>
 
   <DrawerCrypto 
     :is-visible="showDrawerCrypto" 

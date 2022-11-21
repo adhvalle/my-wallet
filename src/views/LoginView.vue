@@ -1,11 +1,17 @@
 <script setup>
+import { reactive } from 'vue'
 import { login } from '@/api/auth'
 import { setLoginData } from '@/models/auth'
 import { getRouter } from '@/router'
 
+const formData = reactive({
+  username: '',
+  password: ''
+})
+
 const submit = async () => {
   try {
-    const response = await login()
+    const response = await login(formData)
     setLoginData(response)
     getRouter().push({ name: 'dashboard' })
   } catch (error) {
@@ -17,8 +23,14 @@ const submit = async () => {
 <template>
   <main>
     <form @submit.prevent="submit">
-      <input type="text" />
-      <input type="password" /> 
+      <input 
+        v-model="formData.username"
+        type="text"
+      />
+      <input 
+        v-model="formData.password"
+        type="password" 
+      /> 
       <button>submit</button>
     </form>
   </main>
