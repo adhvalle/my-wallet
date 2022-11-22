@@ -1,0 +1,40 @@
+:root {
+  --color-white: #fff;
+  --color-primary: #0663f9;
+
+  --wrapper: 85%;
+
+  --width-xs: 320px;
+  --width-sm: 480px;
+  --width-lg: 640px;
+
+  --size-xs: 8px;
+  --size-sm: 16px;
+  --size-lg: 24px;
+  --size-xl: 32px;
+}
+
+body {
+  font-family: sans-serif;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+}
+
+input {
+  height: var(--size-lg);
+  margin-bottom: var(--size-sm);
+}
+
+button {
+  height: var(--size-xl);
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: 0;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
