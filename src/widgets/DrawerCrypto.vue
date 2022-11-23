@@ -36,7 +36,7 @@ const submit = async () => {
     retrieveWallet(true)
     _resetForm()
     formResponse.value = 'success'
-  } catch (error) {
+  } catch {
     formResponse.value = 'error'
   }
 
@@ -63,7 +63,7 @@ watch(() => props.isVisible, value => {
       <div 
         v-if="formResponse"
         class="drawer-crypto__response"
-        :class="`drawer-crypto__response-${formResponse}`"
+        :class="`drawer-crypto__response--${formResponse}`"
       >
         {{ formResponses[formResponse] }}
       </div>
@@ -169,11 +169,11 @@ watch(() => props.isVisible, value => {
   background-color: var(--color-black);
 }
 
-.drawer-crypto__response-success {
+.drawer-crypto__response--success {
   background-color: var(--color-primary);
 }
 
-.drawer-crypto__response-error {
+.drawer-crypto__response--error {
   background-color: var(--color-error);
 }
 </style>

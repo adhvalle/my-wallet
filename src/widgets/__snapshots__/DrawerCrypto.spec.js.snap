@@ -1,0 +1,21 @@
+// Vitest Snapshot v1
+
+exports[`DrawerCrypto > renders the component 1`] = `
+"<transition-stub name=\\"fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
+  <!--v-if-->
+</transition-stub>
+<transition-stub name=\\"slide-x\\" appear=\\"false\\" persisted=\\"true\\" css=\\"true\\">
+  <div class=\\"the-drawer\\" style=\\"display: none;\\"><a href=\\"#\\" class=\\"the-drawer__btn\\"><img src=\\"/images/icn-close.svg\\" alt=\\"close\\" class=\\"the-drawer__icn\\"></a>
+    <div class=\\"drawer-crypto\\">
+      <!--v-if-->
+      <form class=\\"drawer-crypto__form\\"><label class=\\"drawer-crypto__label\\">Receiver</label><select class=\\"drawer-crypto__select\\"></select><label class=\\"drawer-crypto__label\\">Currency</label>
+        <div class=\\"drawer-crypto__options\\">
+          <div class=\\"drawer-crypto__option\\"><input class=\\"drawer-crypto__radio\\" type=\\"radio\\" name=\\"currency\\" id=\\"ETH\\" value=\\"ETH\\"><label for=\\"ETH\\">ETH</label></div>
+          <div class=\\"drawer-crypto__option\\"><input class=\\"drawer-crypto__radio\\" type=\\"radio\\" name=\\"currency\\" id=\\"DOGE\\" value=\\"DOGE\\"><label for=\\"DOGE\\">DOGE</label></div>
+          <div class=\\"drawer-crypto__option\\"><input class=\\"drawer-crypto__radio\\" type=\\"radio\\" name=\\"currency\\" id=\\"BTC\\" value=\\"BTC\\"><label for=\\"BTC\\">BTC</label></div>
+        </div><label class=\\"drawer-crypto__label\\">Amount</label><input type=\\"text\\"><button class=\\"drawer-crypto__button\\">Send transaction</button>
+      </form>
+    </div>
+  </div>
+</transition-stub>"
+`;
