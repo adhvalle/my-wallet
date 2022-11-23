@@ -39,6 +39,8 @@ const submit = async () => {
   } catch (error) {
     formResponse.value = 'error'
   }
+
+  setTimeout(() => { formResponse.value = '' }, 3000)
 }
 
 const _resetForm = () => {
@@ -57,42 +59,121 @@ watch(() => props.isVisible, value => {
     :is-visible="showDrawer" 
     @on-close="$emit('on-close')"
   >
-    <div v-if="formResponse">
-      {{ formResponses[formResponse] }}
-    </div>
-    <form @submit.prevent="submit">
-      <select v-model="formData.receiver">
-        <option
-          v-for="contact in myContacts"
-          :key="contact.email"
-          :value="contact.email"
-          v-text="contact.name"
-        />
-      </select>
-      <div>
-        <div 
-          v-for="currency in currencies"
-          :key="currency"
-        >
-          <input
-            v-model="formData.currency"
-            type="radio"
-            name="currency"
-            :key="currency"
-            :id="currency"
-            :value="currency"
-          >
-          <label 
-            :for="currency" 
-            v-text="currency"
-          />
-        </div>
-      </div>
-      <input 
-        v-model="formData.amount"
-        type="text"
+    <div class="drawer-crypto">
+      <div 
+        v-if="formResponse"
+        class="drawer-crypto__response"
+        :class="`drawer-crypto__response-${formResponse}`"
       >
-      <button>Send transaction</button>
-    </form>
+        {{ formResponses[formResponse] }}
+      </div>
+      <form 
+        @submit.prevent="submit"
+        class="drawer-crypto__form"
+      >
+        <label class="drawer-crypto__label">Receiver</label>
+        <select 
+          v-model="formData.receiver"
+          class="drawer-crypto__select"
+        >
+          <option
+            v-for="contact in myContacts"
+            :key="contact.email"
+            :value="contact.email"
+            v-text="contact.name"
+          />
+        </select>
+        <label class="drawer-crypto__label">Currency</label>
+        <div class="drawer-crypto__options">
+          <div 
+            v-for="currency in currencies"
+            :key="currency"
+            class="drawer-crypto__option"
+          >
+            <input
+              v-model="formData.currency"
+              class="drawer-crypto__radio"
+              type="radio"
+              name="currency"
+              :key="currency"
+              :id="currency"
+              :value="currency"
+            >
+            <label 
+              :for="currency" 
+              v-text="currency"
+            />
+          </div>
+        </div>
+        <label class="drawer-crypto__label">Amount</label>
+        <input 
+          v-model="formData.amount"
+          type="text"
+        >
+        <button class="drawer-crypto__button">Send transaction</button>
+      </form>
+    </div>
   </TheDrawer>
 </template>
+
+<style>
+.drawer-crypto {
+  margin: var(--size-lg) auto 0;
+  width: var(--wrapper);
+}
+
+.drawer-crypto__select {
+  height: var(--size-xl);
+}
+
+.drawer-crypto__select,
+.drawer-crypto__options {
+  margin-bottom: var(--size-lg);
+}
+
+.drawer-crypto__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.drawer-crypto__label {
+  font-size: var(--font-xs);
+  font-weight: bold;
+  margin-bottom: var(--size-xs);
+}
+
+.drawer-crypto__options {
+  display: flex;
+}
+
+.drawer-crypto__option {
+  display: flex;
+  align-items: center;
+  margin-right: var(--size-xs);
+}
+
+.drawer-crypto__radio {
+  margin: 0 var(--size-xs) 0 0;
+}
+
+.drawer-crypto__button {
+  margin-top: var(--size-lg);
+}
+
+.drawer-crypto__response {
+  color: var(--color-white);
+  padding: var(--size-xs);
+  font-size: var(--font-xs);
+  font-weight: bold;
+  margin-bottom: var(--size-lg);
+  background-color: var(--color-black);
+}
+
+.drawer-crypto__response-success {
+  background-color: var(--color-primary);
+}
+
+.drawer-crypto__response-error {
+  background-color: var(--color-error);
+}
+</style>

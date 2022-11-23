@@ -1,6 +1,9 @@
 :root {
-  --color-white: #fff;
+  --color-black: #000000;
+  --color-grey: #F0F0F0;
+  --color-white: #ffffff;
   --color-primary: #0663f9;
+  --color-error: #FB6D69;
 
   --wrapper: 85%;
 
@@ -12,6 +15,12 @@
   --size-sm: 16px;
   --size-lg: 24px;
   --size-xl: 32px;
+  --size-xxl: 48px;
+
+  --font-xs: 14px;
+  --font-sm: 16px;
+  --font-lg: 18px;
+  --font-xl: 24px;
 }
 
 body {
@@ -24,6 +33,7 @@ body {
 input {
   height: var(--size-lg);
   margin-bottom: var(--size-sm);
+  padding: 0;
 }
 
 button {
@@ -31,6 +41,8 @@ button {
   background-color: var(--color-primary);
   color: var(--color-white);
   border: 0;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 ul {

@@ -19,7 +19,17 @@ defineEmits(['on-close'])
       v-show="isVisible" 
       class="the-drawer" 
     >
-      <button @click="$emit('on-close')">close</button>
+      <a 
+        href="#"
+        @click.prevent="$emit('on-close')"
+        class="the-drawer__btn"
+      >
+        <img 
+          src="/images/icn-close.svg" 
+          alt="close"
+          class="the-drawer__icn"
+        >
+      </a>
       <slot />
     </div>
   </transition>
@@ -45,5 +55,19 @@ defineEmits(['on-close'])
   height: 100vh;
   background-color: white;
   z-index: 60;
+}
+
+.the-drawer__btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--size-xxl);
+  height: var(--size-xxl);
+  background-color: var(--color-grey);
+}
+
+.the-drawer__icn {
+  width: var(--size-xl);
+  height: var(--size-xl);
 }
 </style>

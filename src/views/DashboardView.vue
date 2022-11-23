@@ -49,15 +49,15 @@ const transactionsList = computed(() => {
 
 <style>
 .dashboard__header {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--color-black);
 }
 
 .dashboard__title {
-  font-size: 24px;
+  font-size: var(--font-xl);
 }
 
 .dashboard__subtitle {
-  font-size: 18px;
+  font-size: var(--font-lg);
 }
 
 .dashboard__wrapper {
@@ -76,11 +76,22 @@ const transactionsList = computed(() => {
 .dashboard__transaction {
   display: grid;
   gap: var(--size-sm);
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  padding: var(--size-sm);
+  font-size: var(--font-sm);
+  background-color: var(--color-grey);
 }
 
 .dashboard__transaction-item {
   border-bottom: 1px solid black;
   margin-bottom: var(--size-sm);
+  font-size: var(--font-xs);
+}
+
+@media (min-width: 768px) {
+  .dashboard__transaction {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+  }
 }
 </style>
